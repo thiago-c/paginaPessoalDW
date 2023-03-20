@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/jpg" href="images/f2.jpg" />
+    <title>Minha Página Pessoal</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#dados_pessoais">Dados Pessoais</a></li>
+          <li><a href="#dados_profissionais">Dados Profissionais</a></li>
+          <li><a href="#dados_escolaridade">Escolaridade</a></li>
+          <li><a href="#dados_lazer">Atividades de Lazer</a></li>
+          <li><a href="/contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="contato">
+        <form action="/index.php" method="post">
+          <label for="nome">Nome</label>
+          <input
+            required type="text"
+            name="nome"
+            id="nome"
+            placeholder="Digite seu Nome"
+          />
+          <label for="fone">Fone</label>
+          <input
+            required type="text"
+            name="fone"
+            id="fone"
+            placeholder="Digite seu Telefone"
+          />
+          <label for="email">E-mail</label>
+          <input
+            required type="email"
+            name="email"
+            id="email"
+            placeholder="Digite seu E-mail"
+          />
+          <label for="contato">Motivo de Contato</label>
+          <select name="contato" id="contato">
+            <option value="Booking">Booking</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Outros">Outros</option>
+          </select>
+          <label for="comentarios">Comentários Gerais</label>
+          <textarea
+            name="comentarios"
+            id="comentarios"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <input type="submit" value="Enviar" />
+        </form>
+      </section>
+      <hr />
+    </main>
+    <footer>
+      <a href="mailto:thiago.colomeu@aluno.ifsp.edu.br"
+        ><img src="images/iconeemail.png" alt="E-Mail"
+      /></a>
+    </footer>
+  </body>
+</html>

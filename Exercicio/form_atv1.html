@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/index.php" method="post">
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" id="nome" />
+      <label for="endereco">Endereço</label>
+      <input type="text" name="endereco" id="endereco" />
+      <label for="cidade">Cidade</label>
+      <select name="cidade" id="cidade">
+        <option value="Campinas">Campinas</option>
+        <option value="Sumaré">Sumaré</option>
+        <option value="Hortolândia">Hortolândia</option>
+        <option value="Valinhos">Valinhos</option>
+      </select>
+      <p>Gênero</p>
+      <input type="radio" name="genero" id="genero1" value="Feminino" />
+      <label for="genero1">Feminino</label>
+      <input type="radio" name="genero" id="genero2" value="Masculino" />
+      <label for="genero2">Masculino</label>
+      <input type="radio" name="genero" id="genero3" value="Outros" />
+      <label for="genero3">Outros</label>
+      <label for="data_nasc">Data de nascimento</label>
+      <input type="date" name="data_nasc" id="data_nasc" />
+      <label for="email">E-Mail</label>
+      <input type="email" name="email" id="email" />
+      <p>Cursos de interesse</p>
+      <input type="checkbox" name="curso1" id="curso1" />
+      <label for="curso1">TADS</label>
+      <input type="checkbox" name="curso2" id="curso2" />
+      <label for="curso2">TI</label>
+      <input type="checkbox" name="curso3" id="curso3" />
+      <label for="curso3">TE</label>
+      <input type="checkbox" name="curso4" id="curso4" />
+      <label for="curso4">PEDAG</label>
+      <label for="hist">Histórico Escolar</label>
+      <input type="file" name="hist" id="hist" />
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>
