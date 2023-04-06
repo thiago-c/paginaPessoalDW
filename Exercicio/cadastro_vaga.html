@@ -1,0 +1,64 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vaga</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <style>
+      #box2 {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        background-color: orangered;
+        color: white;
+      }
+      #box3 {
+        width: fit-content;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      h1 {
+        font-size: 15vh;
+      }
+      p {
+        font-size: 10vh;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="box1" style="display: block">
+      <section>
+        <div>
+          <form id="formulario" action="/envia.php" method="post">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" />
+            <label for="idade">Idade</label>
+            <input type="number" name="idade" id="idade" />
+            <input type="button" value="Enviar" onclick="verificaIdade()" />
+          </form>
+        </div>
+      </section>
+    </main>
+    <div id="box2" style="display: none">
+      <div id="box3">
+        <h1>Vagas</h1>
+        <p>Para maiores de 18 anos</p>
+      </div>
+    </div>
+    <script>
+      function verificaIdade() {
+        let idade = document.querySelector('#idade').value;
+        if(parseInt(idade)<18){
+          document.querySelector('#box1').style.display = 'none';
+          document.querySelector('#box2').style.display = 'block';
+        } else {
+          document.querySelector('#formulario').submit();
+        }
+      }
+    </script>
+  </body>
+</html>
