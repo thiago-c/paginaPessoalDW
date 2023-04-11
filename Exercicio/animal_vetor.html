@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animal</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <main>
+      <section id="animal">
+        <section id="insereInicioSection">
+          <h1>Animal - Vetor</h1>
+          <label for="insereInicio"
+            >Digite um animal para inserir no início:</label
+          >
+          <input type="text" name="insereInicio" id="insereInicio" />
+          <input type="button" value="Inserir" onclick="insereInicio()" />
+        </section>
+        <section id="insereFimSection">
+          <h1>Animal - Vetor</h1>
+          <label for="insereFim">Digite um animal para inserir no fim:</label>
+          <input type="text" name="insereFim" id="insereFim" />
+          <input type="button" value="Inserir" onclick="insereFim()" />
+        </section>
+        <section id="removeInicioSection">
+          <h1>Animal - Vetor</h1>
+          <label for="removeInicio"
+            >Clique o botão para remover um animal do início:</label
+          >
+          <input
+            type="button"
+            name="removeInicio"
+            value="Remover"
+            onclick="removeInicio()"
+          />
+        </section>
+        <section id="removeFimSection">
+          <h1>Animal - Vetor</h1>
+          <label for="removeFim"
+            >Clique o botão para remover um animal do fim:</label
+          >
+          <input
+            type="button"
+            name="removeFim"
+            value="Remover"
+            onclick="removeFim()"
+          />
+        </section>
+        <section id="selecionaAleatorioSection">
+          <h1>Animal - Vetor</h1>
+          <label for="selecionaAleatorio"
+            >Clique o botão para selecionar um animal aleatório:</label
+          >
+          <input
+            type="text"
+            name="selecionaAleatorio"
+            id="selecionaAleatorio"
+            disabled
+          />
+          <input
+            type="button"
+            value="Selecionar"
+            onclick="selecionaAleatorio()"
+          />
+        </section>
+        <section id="resultadoSection">
+          <h1>Animal - Vetor</h1>
+          <label for="resultado">Histórico</label>
+          <textarea
+            name="resultado"
+            id="resultado"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </section>
+      </section>
+    </main>
+    <script>
+      let vetor_animal = new Array();
+      function insereInicio() {
+        vetor_animal.unshift(document.querySelector("#insereInicio").value);
+        alert("Vetor de animais atualizado");
+        document.querySelector("#insereInicio").value = "";
+        console.log(vetor_animal);
+        retornaHistorico();
+      }
+
+      function insereFim() {
+        vetor_animal.push(document.querySelector("#insereFim").value);
+        alert("Vetor de animais atualizado");
+        document.querySelector("#insereFim").value = "";
+        console.log(vetor_animal);
+        retornaHistorico();
+      }
+
+      function removeInicio() {
+        vetor_animal.shift();
+        alert("Vetor de animais atualizado");
+        console.log(vetor_animal);
+        retornaHistorico();
+      }
+
+      function removeFim() {
+        vetor_animal.pop();
+        alert("Vetor de animais atualizado");
+        console.log(vetor_animal);
+        retornaHistorico();
+      }
+
+      function retornaHistorico() {
+        document.querySelector("#resultado").value =
+          document.querySelector("#resultado").value +
+          "\n" +
+          vetor_animal.join(", ");
+      }
+
+      function selecionaAleatorio() {
+        let indiceAleatorio = Math.floor(Math.random() * vetor_animal.length);
+        document.querySelector("#selecionaAleatorio").value =
+          vetor_animal[indiceAleatorio];
+      }
+    </script>
+  </body>
+</html>

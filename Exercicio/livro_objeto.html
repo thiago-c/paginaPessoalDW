@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Livros</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <main>
+      <section id="livros">
+        <h1>Cadastro de livros</h1>
+        <input type="text" name="nome" id="nome" placeholder="Nome do livro" />
+        <input
+          type="text"
+          name="autor"
+          id="autor"
+          placeholder="Autor do livro"
+        />
+        <input
+          type="text"
+          name="numero_pg"
+          id="numero_pg"
+          placeholder="Número de páginas do livro"
+        />
+        <input
+          type="text"
+          name="genero"
+          id="genero"
+          placeholder="Gênero do livro"
+        />
+        <input type="button" value="Cadastrar" onclick="cadastrarLivro()" />
+        <input type="button" value="Listar" onclick="listarLivros()" />
+        <textarea name="lista" id="lista" cols="30" rows="10"></textarea>
+      </section>
+    </main>
+    <script>
+      var biblioteca = new Array();
+
+      function cadastrarLivro() {
+        var livro = {
+          nome: document.querySelector("#nome").value,
+          autor: document.querySelector("#autor").value,
+          numero_pg: document.querySelector("#numero_pg").value,
+          genero: document.querySelector("#genero").value,
+          printLivro: function () {
+            return (
+              "Nome: " +
+              this.nome +
+              " | Autor: " +
+              this.autor +
+              " | Nº de Páginas: " +
+              this.numero_pg +
+              " | Gênero: " +
+              this.genero
+            );
+          },
+        };
+        biblioteca.push(livro);
+        document.querySelector("#nome").value = "";
+        document.querySelector("#autor").value = "";
+        document.querySelector("#numero_pg").value = "";
+        document.querySelector("#genero").value = "";
+        alert("Livro inserido na biblioteca!");
+      }
+
+      function listarLivros() {
+          let lista = "";
+          biblioteca.forEach(function (livro) {
+            lista += livro.printLivro() + "\n";
+          });
+          document.querySelector("#lista").value = lista;
+        }
+    </script>
+  </body>
+</html>
