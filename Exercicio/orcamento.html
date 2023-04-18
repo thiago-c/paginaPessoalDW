@@ -1,0 +1,126 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orçamento</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <style>
+      #box2 {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        background-color: orangered;
+        color: white;
+      }
+      #box3 {
+        width: fit-content;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      h1 {
+        font-size: 15vh;
+      }
+      p {
+        font-size: 10vh;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section id="formulario">
+        <h1>Orçamento</h1>
+        <div>
+          <form id="formulario">
+            <label for="descricao">Descrição</label>
+            <input type="text" name="descricao" id="descricao" />
+            <label for="valor">Valor</label>
+            <input type="number" name="valor" id="valor" />
+            <label for="tipo_mov">Tipo</label>
+            <select name="tipo_mov" id="tipo_mov">
+              <option value="Entrada">Entrada</option>
+              <option value="Saida">Saída</option>
+            </select>
+            <input type="button" value="Salvar" onclick="contabiliza()" />
+          </form>
+        </div>
+      </section>
+      <section id="tabela">
+        <div>
+          <label for="total">Total</label>
+          <input type="number" name="total" id="total" disabled />
+          <table>
+            <thead>
+              <tr>
+                <th>Conta</th>
+                <th>Tipo</th>
+                <th>Valor</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody id="dados"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script>
+      var dados = new Array();
+
+      function atualizaTotal() {
+        let total = 0;
+        dados.forEach(function(dado){
+            if(dado.tipo === "Entrada"){
+                total += dado.valor;
+            }else if(dado.tipo === "Saida"){
+                total -= dado.valor;
+            }
+        });
+        document.querySelector("#total").value = total;
+      }
+
+      function removeDado(dado_row, id) {
+        dados.splice(id, 1);
+        dado_row.parentNode.removeChild(dado_row);
+        atualizaTotal();
+      }
+
+      function contabiliza() {
+        var dado = {
+          id: dados.length,
+          conta: document.querySelector("#descricao").value,
+          tipo: document.querySelector("#tipo_mov").value,
+          valor: parseFloat(document.querySelector("#valor").value),
+        };
+        dados.push(dado);
+        let tr = document.createElement("tr");
+        let td1 = document.createElement("td");
+        td1.className = "conta";
+        let td2 = document.createElement("td");
+        td2.className = "tipo";
+        let td3 = document.createElement("td");
+        td3.className = "valor";
+        let td4 = document.createElement("td");
+        td1.innerText = dado.conta;
+        td2.innerText = dado.tipo;
+        td3.innerText = dado.valor;
+        let btnRemove = document.createElement("button");
+        td4.innerHTML =
+          '<input type="button" value="Remover" onclick="removeDado(this.parentNode.parentNode, \''+dado.id+'\')" />';
+        if (dado.tipo === "Entrada") {
+          tr.style.backgroundColor = "green";
+        } else {
+          tr.style.backgroundColor = "red";
+        }
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        document.querySelector("#dados").appendChild(tr);
+        atualizaTotal();
+      }
+    </script>
+  </body>
+</html>
